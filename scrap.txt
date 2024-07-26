@@ -1,0 +1,27 @@
+auth token =Z9XKF7K2HTSTXESY5VRNS8UP
+
+
+sid = AC0f80444db901e42c6a76aab1c30db92e
+servicesid = VAd1df2677fc213df3faef3029e252aa63
+
+
+S9NYWUXKEGPX9WFPWUGAMHF6
+
+# Download the helper library from https://www.twilio.com/docs/python/install
+import os
+from twilio.rest import Client
+
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+account_sid = os.environ["TWILIO_ACCOUNT_SID"]
+auth_token = os.environ["TWILIO_AUTH_TOKEN"]
+client = Client(account_sid, auth_token)
+
+message = client.messages.create(
+    body="All in the game, yo", from_="+15005550006", to="+5571981265131"
+)
+
+print(message.body)
+
+
+lwgv twuh dufz puge 
