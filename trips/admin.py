@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TripPackage,PackageItnary,TripInclusion,TripExclusion
+from .models import TripPackage,PackageItnary,TripInclusion,TripExclusion,TripBooking
 
 
 
@@ -18,3 +18,8 @@ class TripExclusionAdmin(admin.TabularInline):
 @admin.register(TripPackage)
 class TripPackageAdmin(admin.ModelAdmin):
     inlines = [TripItnaryPackageAdmin,TripInclusionAdmin,TripExclusionAdmin]
+
+
+@admin.register(TripBooking)
+class TripBookingAdmin(admin.ModelAdmin):
+    pass

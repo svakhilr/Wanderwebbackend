@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 
-from trips.views import TripPckageViewset
+from trips.views import TripPckageViewset,TripBookingViewset
 from customers.views import CustomerViewset
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -30,6 +30,7 @@ router = DefaultRouter()
 
 router.register('trips', TripPckageViewset)
 router.register('customer',CustomerViewset)
+router.register('booking/trips',TripBookingViewset)
 
 
 
