@@ -12,8 +12,8 @@ class JSONRenderer(BaseJSONRenderer):
         response = renderer_context.get("response", None)
         message = None
         keys = None
-        print("data" , data)
-        print("view" , getattr(view, "success", True))
+        # print("data" , data)
+        # print("view" , getattr(view, "success", True))
         if data is not None:
             if "message" in data:
                 message = data["message"]

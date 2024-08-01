@@ -21,6 +21,11 @@ class CustomerViewset(viewsets.ModelViewSet):
             permission_classes=[AllowAny]
         return [permission() for permission in permission_classes]
     
+    def get_object(self):
+        if self.kwargs["pk"] == "me":
+            return CustomerProfile.objects.get(user=self.request.user)
+        return super().get_object()
+    
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -74,6 +79,11 @@ class CustomerViewset(viewsets.ModelViewSet):
             if not user.is_verified:
                 return Response({"message":"User not verified"},status=status.HTTP_403_FORBIDDEN)
             tokens = get_tokens_for_user(user)
+            profile_name = user.customer.profile_name
+            profile_data = {
+                "profile_name":profile_name
+            }
+            tokens.update(profile_data)
             return Response(tokens,status=status.HTTP_200_OK)
         
 

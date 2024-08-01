@@ -9,7 +9,7 @@ class CustomerRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomerProfile
-        fields = ('email','profile_name','password','confirm_password')
+        fields = ('id','email','profile_name','password','confirm_password')
 
     def validate(self, attrs):
         print(attrs["user"]["password"])

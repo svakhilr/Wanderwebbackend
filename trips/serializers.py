@@ -41,9 +41,10 @@ class TripaPackageListSerializer(serializers.ModelSerializer):
 
 class TripBookingCreateSerializer(serializers.ModelSerializer):
     package_id = serializers.IntegerField(write_only=True)
+    booking_id = serializers.CharField(read_only=True)
     class Meta:
         model = TripBooking
-        fields = ('booker_name','package_id','contact_number','total_participants','starting_date')
+        fields = ('id','booker_name','booker_email','booking_id','package_id','contact_number','total_participants','starting_date')
 
     def create(self, validated_data):
         package_id = validated_data.pop("package_id")
