@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import environ
 from datetime import timedelta
+import os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -180,6 +181,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Base url to serve media files
