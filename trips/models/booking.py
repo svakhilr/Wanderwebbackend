@@ -18,7 +18,7 @@ class TripBooking(models.Model):
         (FAILED,'Failed'))
     customer = models.ForeignKey(CustomerProfile,on_delete=models.CASCADE,related_name='tripbooking')
     trip_package = models.ForeignKey(TripPackage,models.CASCADE,related_name='tripbooking')
-    booking_id = models.CharField(max_length=50,null=True,blank=True)
+    booking_id = models.CharField(max_length=100,null=True,blank=True)
     payment_session_id = models.CharField(max_length=50,null=True,blank=True)
     booker_name = models.CharField(max_length=50)
     contact_number = models.CharField(max_length=10)
