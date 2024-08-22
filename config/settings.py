@@ -144,7 +144,7 @@ CORS_ALLOWED_ORIGINS = [
     
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://wander-web.netlify.app/"
+    "https://wander-web.netlify.app"
     
 ]
 

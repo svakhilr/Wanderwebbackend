@@ -93,31 +93,31 @@ class TripBookingViewset(viewsets.ModelViewSet):
         booking_id = request.data["booking_id"]
         print("bookingprice",int(amount))
        
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                line_items =[{
-                'price_data' :{
-                'currency' : 'usd',  
-                    'product_data': {
-                    'name': package_name,
-                    },
-                'unit_amount': int(amount)*100
+        # try:
+        checkout_session = stripe.checkout.Session.create(
+            line_items =[{
+            'price_data' :{
+            'currency' : 'usd',  
+                'product_data': {
+                'name': package_name,
                 },
-                'quantity' : 1
-            }],
-                metadata={"booking_id": booking_id},
-                mode= 'payment',
-                success_url= FRONTEND_CHECKOUT_SUCCESS_URL,
-                cancel_url= FRONTEND_CHECKOUT_FAILED_URL,
-                )
-            data = {
-                "url":checkout_session.url
-            }
-            return Response(data,status=status.HTTP_200_OK)
+            'unit_amount': int(amount)*100
+            },
+            'quantity' : 1
+        }],
+            metadata={"booking_id": booking_id},
+            mode= 'payment',
+            success_url= FRONTEND_CHECKOUT_SUCCESS_URL,
+            cancel_url= FRONTEND_CHECKOUT_FAILED_URL,
+            )
+        data = {
+            "url":checkout_session.url
+        }
+        return Response(data,status=status.HTTP_200_OK)
             # return redirect(checkout_session.url ,code=303)
-        except Exception as e:
-            print(e)
-        return e
+        # except Exception as e:
+        #     print(e)
+        # return e
     
     @action(methods=["post"], detail=False)
     def success_payment(self,request,*args,**kwargs):
